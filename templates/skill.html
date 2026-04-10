@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ skill_name|capitalize }} Skill Details</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .skill-card {
+            background: rgba(0, 0, 0, 0.75);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            color: #ffd700;
+            text-shadow: 1px 1px 5px #000;
+        }
+
+        h3 {
+            color: #00ffff;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            background: #2575fc;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        ul li:hover {
+            background: #6a11cb;
+            transform: scale(1.05);
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            background: #ffd700;
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-btn:hover {
+            background: #ffc107;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Current Skill -->
+        <div class="skill-card">
+            <h2>{{ skill_name|capitalize }} Skill Details</h2>
+            <p><b>Description:</b> {{ skill.desc }}</p>
+            <h3>Key Features</h3>
+            <ul>
+                {% for feature in skill.features %}
+                <li>{{ feature }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div style="text-align:center; margin-top:20px;">
+            <a href="javascript:history.back()" class="back-btn">⬅ Go Back</a>
+            <a href="/dashboard" class="back-btn" style="margin-left:10px; background:#00ffff;">
+                🏠 Dashboard
+            </a>
+        </div>
+
+    </div>
+</body>
+
+</html>

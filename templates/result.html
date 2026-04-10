@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Result</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      color: #fff;
+    }
+
+    .result-container {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      width: 400px;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 28px;
+      color: #ffd700;
+      text-shadow: 1px 1px 5px #000;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      margin-top: 25px;
+      margin-bottom: 10px;
+      color: #00ffff;
+      text-shadow: 1px 1px 3px #000;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      background: #2575fc;
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    ul li:hover {
+      background: #6a11cb;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 25px;
+      border-radius: 8px;
+      background: #ffd700;
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #ffc107;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="result-container">
+    <h2>Resume Score: {{ score }}%</h2>
+
+    <h3>Skills Found</h3>
+    <ul>
+      {% for s in found %}
+      <li>{{ s }}</li>
+      {% endfor %}
+    </ul>
+
+    <h3>Missing Skills</h3>
+    <ul>
+      {% for skill in missing %}
+      <li>
+        <a href="{{ url_for('skill_detail', skill_name=skill) }}" style="color:red; text-decoration:none;">
+          {{ skill }}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <a href="/dashboard" class="back-btn">Back to Dashboard</a>
+  </div>
+</body>
+
+</html>
